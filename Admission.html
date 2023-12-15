@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission - Canaroden College</title>
+    <style>
+        body {
+            background-color: #f2f2f2; /* Light grey background */
+            color: #333; /* Dark text color */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #003366; /* College color for header */
+            color: #fff; /* Header text color */
+            padding: 1em;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #4d4d4d; /* Dark grey background for navigation bar */
+            padding: 0.5em;
+        }
+
+        nav a {
+            color: #fff; /* Navigation link color */
+            text-decoration: none;
+            padding: 0.5em 1em;
+            margin-right: 10px;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        h2 {
+            color: #4d4d4d; /* Dark grey for section headings */
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            background-color: #003366; /* College color for buttons */
+            color: #fff;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #002245; /* Darker shade on hover */
+        }
+    </style>
+</head>
+    </nav>
+
+    <section>
+        <h2>Admission to Canaroden College</h2>
+        <form id="admissionForm">
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="fullName" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="department">Select Department:</label>
+            <select id="department" name="department" onchange="updateCourses()">
+                <option value="arts">Arts</option>
+                <option value="science">Science</option>
+                <option value="commerce">Commerce</option>
+            </select>
+
+            <label for="course">Select Course:</label>
+            <select id="course" name="course" required>
+                <!-- Courses will be dynamically populated based on the selected department -->
+            </select>
+
+            <button type="submit">Submit Admission Form</button>
+        </form>
+    </section>
+
+    <script>
+        function updateCourses() {
+            var department = document.getElementById("department").value;
+            var courseSelect = document.getElementById("course");
+
+            // Clear existing options
+            courseSelect.innerHTML = "";
+
+            // Populate courses based on the selected department
+            switch (department) {
+                case "arts":
+                    courseSelect.options.add(new Option("English", "english"));
+                    courseSelect.options.add(new Option("Sociology", "sociology"));
+                    break;
+                case "science":
+                    courseSelect.options.add(new Option("Computer Science", "computerscience"));
+                    courseSelect.options.add(new Option("Mathematics", "mathematics"));
+                    break;
+                case "commerce":
+                    courseSelect.options.add(new Option("Accounting", "accounting"));
+                    courseSelect.options.add(new Option("Business Management", "businessmanagement"));
+                    break;
+            }
+        }
+
+        // Initial population of courses on page load
+        updateCourses();
+    </script>
+</body>
+
+</html>
